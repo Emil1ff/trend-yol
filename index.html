@@ -13,51 +13,70 @@
 
 <body>
     <header>
-        <div class="top">
-            <span>Indirim Kuponlarim</span>
-            <span>Trendyolda satis yap</span>
-            <span>Hakkimizda</span>
-            <span>Yardim & Destek</span>
+        <div class="container">
+            <div class="top">
+                <span>Indirim Kuponlarim</span>
+                <span>Trendyolda satis yap</span>
+                <span>Hakkimizda</span>
+                <span>Yardim & Destek</span>
+            </div>
+            <div class="header-top" id="scroll">
+                <img src="./assets/img/logo/Trendyol_logo.svg.png" alt="">
+                <div class="search-container">
+                    <input id="searchInput" type="text" placeholder="Aradığınız ürün, kategori veya markayı yazınız">
+                    <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                <div class="nav-wrap">
+                    <div class="giris">
+                        <i class="fa-solid fa-user us"></i>
+                        <i class="fa-regular fa-user"></i>
+                        <span>Giriş Yap</span>
+                    </div>
+                    <div class="favorilerim">
+                        <i class="fa-solid fa-heart he"></i>
+                        <i class="fa-regular fa-heart"></i>
+                        <span>Favorilerim</span>
+                    </div>
+                    <div class="sepet">
+                        <i class="fa-solid fa-shopping-cart"></i>
+                        <span>Sepetim</span>
+                    </div>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li class="nav-item">Azerbaycan</li>
+                    <li class="nav-item">Kadin</li>
+                    <li class="nav-item">Erkek</li>
+                    <li class="nav-item">Anne & Cocuk</li>
+                    <li class="nav-item">Ev & Yasam</li>
+                    <li class="nav-item">Supermarket</li>
+                    <li class="nav-item">Kozmetik</li>
+                    <li class="nav-item">Ayakkabi & Canta</li>
+                    <li class="nav-item">Elektronik</li>
+                    <li class="nav-item">Spor & Outdoor</li>
+                    <li class="nav-item yeni">Cok Satanlar <span>Yeni</span></li>
+                    <li class="nav-item yeni">Flach Urunler <span>Yeni</span></li>
+                </ul>
+            </nav>
         </div>
-        <div class="header-top" id="scroll">
-            <img src="./assets/img/logo/Trendyol_logo.svg.png" alt="">
+        <div class="container-res">
+            <div class="top">
+                <div class="left">
+                    <i class="fa-solid fa-bars" id="nav-btn"></i>
+                    <img src="./assets/img/logo/Trendyol_logo.svg.png" alt="">
+                </div>
+                <div class="icons">
+                    <i class="fa-regular fa-user us"></i>
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-solid fa-shopping-cart"></i>
+                </div>
+            </div>
             <div class="search-container">
                 <input id="searchInput" type="text" placeholder="Aradığınız ürün, kategori veya markayı yazınız">
                 <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
-            <div class="nav-wrap">
-                <div class="giris">
-                    <i class="fa-solid fa-user us"></i>
-                    <i class="fa-regular fa-user"></i>
-                    <span>Giriş Yap</span>
-                </div>
-                <div class="favorilerim">
-                    <i class="fa-solid fa-heart he"></i>
-                    <i class="fa-regular fa-heart"></i>
-                    <span>Favorilerim</span>
-                </div>
-                <div class="sepet">
-                    <i class="fa-solid fa-shopping-cart"></i>
-                    <span>Sepetim</span>
-                </div>
-            </div>
         </div>
-        <nav>
-            <ul>
-                <li class="nav-item">Azerbaycan</li>
-                <li class="nav-item">Kadin</li>
-                <li class="nav-item">Erkek</li>
-                <li class="nav-item">Anne & Cocuk</li>
-                <li class="nav-item">Ev & Yasam</li>
-                <li class="nav-item">Supermarket</li>
-                <li class="nav-item">Kozmetik</li>
-                <li class="nav-item">Ayakkabi & Canta</li>
-                <li class="nav-item">Elektronik</li>
-                <li class="nav-item">Spor & Outdoor</li>
-                <li class="nav-item yeni">Cok Satanlar <span>Yeni</span></li>
-                <li class="nav-item yeni">Flach Urunler <span>Yeni</span></li>
-            </ul>
-        </nav>
     </header>
     <section class="slide">
         <div class="component">
@@ -102,10 +121,9 @@
     </section>
 
     <section class="urunler">
-        <h2>Populer Urunler</h2>
-        <div class="cards" id="cards">
+        <h2>Popüler Ürünler</h2>
 
-        </div>
+        <div class="cards" id="cards"></div>
     </section>
 
     <footer>

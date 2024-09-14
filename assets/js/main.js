@@ -24,40 +24,56 @@ prevButton.addEventListener('click', () => {
 
 
 const cards = document.getElementById('cards');
+let allProducts = [];
+
 const getApi = (url) => {
   axios.get(url)
-   .then(response => {
-     let products = response.data;
-      
-       products.forEach(item => {
-           let card = `
-               <div class="card">
-                <i class="fa-regular fa-heart"></i>
-                <img class="product-img" src="${item.image}" alt="">
-                <div class="product-info">
-                    <h3 class="name">${item.title}</h3>
-                    <div class="rate-count">
-                        <span class="rate">${item.rating.rate}</span> 
-                        <span class="count">(${item.rating.count} reviews)</span>
-                    </div>
-                    <p class="price">${item.price} TL</p>
-                    <div class="bottom">
-                        <div class="coupon">
-                            <img src="https://cdn.dsmcdn.com/web/production/campaign-coupon-icon.svg" class="coupon-icon" alt="">
-                            <span class="coupon-text">Kupon Firsati</span>
-                        </div>
-                        <div class="promotion">
-                            <img src="https://cdn.dsmcdn.com/web/production/campaign-product-promotion-icon.svg" class="promotion-icon" alt="">
-                            <span class="promotion-text">Cok Al Az Ode</span>
-                        </div>
-                    </div>
-                </div>
-            </div>`
-            cards.innerHTML += card;
-   })})
+    .then(response => {
+      allProducts = response.data; 
+      displayProducts(allProducts); 
+    });
 }
 
-getApi('https://fakestoreapi.com/products')
+const displayProducts = (products) => {
+  cards.innerHTML = ''; 
+  products.forEach(item => {
+    let card = `
+      <div class="card">
+        <i class="fa-regular fa-heart"></i>
+        <img class="product-img" src="${item.image}" alt="">
+        <div class="product-info">
+          <h3 class="name">${item.title}</h3>
+          <div class="rate-count">
+            <span class="rate">${item.rating.rate}</span>
+            <span class="count">(${item.rating.count} reviews)</span>
+          </div>
+          <p class="price">${item.price} AZN</p>
+          <div class="bottom">
+            <div class="coupon">
+              <img src="https://cdn.dsmcdn.com/web/production/campaign-coupon-icon.svg" class="coupon-icon" alt="">
+              <span class="coupon-text">Kupon Fırsatı</span>
+            </div>
+            <div class="promotion">
+              <img src="https://cdn.dsmcdn.com/web/production/campaign-product-promotion-icon.svg" class="promotion-icon" alt="">
+              <span class="promotion-text">Çok Al Az Öde</span>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    cards.innerHTML += card;
+  });
+}
+
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('keyup', () => {
+  const searchTerm = searchInput.value.toLowerCase();
+  const filteredProducts = allProducts.filter(product => 
+    product.title.toLowerCase().includes(searchTerm)
+  );
+  displayProducts(filteredProducts); 
+});
+
+getApi('https://fakestoreapi.com/products');
 
 window.addEventListener("scroll", () => {
     let header = document.getElementById("scroll")
