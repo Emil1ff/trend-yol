@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Məhsul Detalları</title>
     <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
         .product-details {
             display: flex;
             flex-direction: column;
@@ -18,10 +24,25 @@
         .product-info {
             text-align: center;
         }
+        .back-button {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
+
+    <button class="back-button" onclick="goBack()">Geri Qayıt</button>
     <div class="product-details" id="productDetails"></div>
 
     <script>
@@ -67,6 +88,10 @@
         getProductDetails(productId);
     } else {
         productDetails.innerHTML = '<p>Məhsul ID-si tapılmadı.</p>';
+    }
+
+    const goBack = () => {
+        window.history.back();
     }
     </script>
 </body>

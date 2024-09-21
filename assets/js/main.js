@@ -102,6 +102,21 @@ const addToFavorites = (id) => {
   }
 }
 
+const sortOptions = document.getElementById('sortOptions');
+sortOptions.addEventListener('change', () => {
+  const selectedOption = sortOptions.value;
+
+  let sortedProducts = [...allProducts]; 
+
+  if (selectedOption === 'priceAsc') {
+    sortedProducts.sort((a, b) => a.price - b.price);
+  } else if (selectedOption === 'priceDesc') {
+    sortedProducts.sort((a, b) => b.price - a.price);
+  } 
+
+  displayProducts(sortedProducts); 
+});
+
 getApi('https://fakestoreapi.com/products');
 
 window.addEventListener("scroll", () => {
