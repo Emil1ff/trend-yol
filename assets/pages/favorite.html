@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favori Məhsullar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+        .favorites-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+        .card {
+            position: relative; 
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .card h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .card .price {
+            color: #d9534f;
+            font-size: 16px;
+        }
+        .delete-btn {
+            position: absolute;
+            top: 10px; 
+            right: 10px; 
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .delete-btn:hover {
+            background-color: #c9302c;
+        }
+        .back-button {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Favori Məhsullar</h1>
+    <button class="back-button" onclick="goBack()">Geri Qayıt</button>
+    <div class="favorites-container" id="favoritesContainer">
+    </div>
+
+    <script>
+    const favoritesContainer = document.getElementById('favoritesContainer');
+
+    const favoriteProducts = JSON.parse(localStorage.getItem('favoriteProducts')) || [];
+
+    const displayFavorites = () => {
+        favoritesContainer.innerHTML = '';
+
+        if (favoriteProducts.length === 0) {
+            favoritesContainer.innerHTML = '<p>Heç bir sevimli məhsul yoxdur.</p>';
+            return;
+        }
+
+        favoriteProducts.forEach((product, index) => {
+            const card = `
+                <div class="card">
+                    <button class="delete-btn" onclick="removeFromFavorites(${index})">X</button>
+                    <img src="${product.image}" alt="${product.title}">
+                    <h3>${product.title}</h3>
+                    <p class="price">${product.price} AZN</p>
+                </div>
+            `;
+            favoritesContainer.innerHTML += card;
+        });
+    };
+
+    const removeFromFavorites = (index) => {
+        favoriteProducts.splice(index, 1); 
+        localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts)); 
+        displayFavorites(); 
+    };
+
+    const goBack = () => {
+        window.history.back();
+    }
+
+    displayFavorites();
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Məhsul Detalları</title>
+    <style>
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .product-img {
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+        .product-info {
+            text-align: center;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="product-details" id="productDetails"></div>
+
+    <script>
+    const productDetails = document.getElementById('productDetails');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    console.log('Məhsul ID-si:', productId); 
+
+    const getProductDetails = (id) => {
+        axios.get(`https://fakestoreapi.com/products/${id}`)
+            .then(response => {
+                const product = response.data;
+                displayProductDetails(product);
+            })
+            .catch(error => {
+                productDetails.innerHTML = '<p>Məhsul tapılmadı.</p>';
+                console.error(error); 
+            });
+    }
+
+    const displayProductDetails = (product) => {
+        if (!product || !product.image || !product.title || !product.description) {
+            productDetails.innerHTML = '<p>Məhsul detalları yüklənə bilmədi.</p>';
+            return;
+        }
+        productDetails.innerHTML = `
+            <img src="${product.image}" class="product-img" alt="${product.title}">
+            <div class="product-info">
+                <h2>${product.title}</h2>
+                <p>${product.description}</p>
+                <p class="price">${product.price} AZN</p>
+                <div class="rate-count">
+                    <span class="rate">${product.rating.rate}</span>
+                    <span class="count">(${product.rating.count} reviews)</span>
+                </div>
+            </div>
+        `;
+    }
+
+    if (productId) {
+        getProductDetails(productId);
+    } else {
+        productDetails.innerHTML = '<p>Məhsul ID-si tapılmadı.</p>';
+    }
+    </script>
+</body>
+</html>

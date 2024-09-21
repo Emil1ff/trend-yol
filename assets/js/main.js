@@ -23,6 +23,8 @@ prevButton.addEventListener('click', () => {
 });
 
 
+
+
 const cards = document.getElementById('cards');
 let allProducts = [];
 
@@ -36,13 +38,19 @@ const getApi = (url) => {
 
 const displayProducts = (products) => {
   cards.innerHTML = ''; 
+
+  if (products.length === 0) { 
+    cards.innerHTML = '<p class="no-results">Belə məhsul tapılmadı</p>';
+    return;
+  }
+
   products.forEach(item => {
     let card = `
       <div class="card">
-        <i class="fa-regular fa-heart"></i>
+        <i class="fa-regular fa-heart" data-id="${item.id}"></i> <!-- Ürək simvoluna data-id atributu əlavə edildi -->
         <img class="product-img" src="${item.image}" alt="">
         <div class="product-info">
-          <h3 class="name">${item.title}</h3>
+          <h3 class="name"><a href="assets/pages/product.html?id=${item.id}">${item.title}</a></h3>
           <div class="rate-count">
             <span class="rate">${item.rating.rate}</span>
             <span class="count">(${item.rating.count} reviews)</span>
@@ -62,6 +70,14 @@ const displayProducts = (products) => {
       </div>`;
     cards.innerHTML += card;
   });
+
+  const heartIcons = document.querySelectorAll('.fa-heart');
+  heartIcons.forEach(icon => {
+    icon.addEventListener('click', () => {
+      const productId = icon.getAttribute('data-id');
+      addToFavorites(productId); 
+    });
+  });
 }
 
 const searchInput = document.getElementById('searchInput');
@@ -73,6 +89,19 @@ searchInput.addEventListener('keyup', () => {
   displayProducts(filteredProducts); 
 });
 
+const addToFavorites = (id) => {
+  const selectedProduct = allProducts.find(product => product.id == id);
+  let favoriteProducts = JSON.parse(localStorage.getItem('favoriteProducts')) || [];
+
+  if (!favoriteProducts.some(product => product.id == id)) {
+    favoriteProducts.push(selectedProduct);
+    localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts));
+    alert(`${selectedProduct.title} sevimlilərə əlavə edildi!`);
+  } else {
+    alert(`${selectedProduct.title} artıq sevimlilərdədir!`);
+  }
+}
+
 getApi('https://fakestoreapi.com/products');
 
 window.addEventListener("scroll", () => {
@@ -83,3 +112,7 @@ window.addEventListener("scroll", () => {
         header.classList.remove("headerAnime")
     }
 })
+
+document.getElementById('favorilerim').addEventListener('click', () => {
+  window.location.href = './assets/pages/favorite.html';
+});

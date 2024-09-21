@@ -32,7 +32,7 @@
                         <i class="fa-regular fa-user"></i>
                         <span>Giriş Yap</span>
                     </div>
-                    <div class="favorilerim">
+                    <div class="favorilerim" id="favorilerim">
                         <i class="fa-solid fa-heart he"></i>
                         <i class="fa-regular fa-heart"></i>
                         <span>Favorilerim</span>
@@ -78,53 +78,64 @@
             </div>
         </div>
     </header>
-    <section class="slide">
-        <div class="component">
-            <img src="./assets/img/component/img22.png" alt="">
-            <img src="./assets/img/component/img1.png" alt="">
-            <img src="./assets/img/component/img2.jpg" alt="">
-            <img src="./assets/img/component/img3.png" alt="">
-            <img src="./assets/img/component/img4.png" alt="">
-            <img src="./assets/img/component/img5.png" alt="">
-            <img src="./assets/img/component/img6.png" alt="">
-            <img src="./assets/img/component/img7.png" alt="">
-            <img src="./assets/img/component/img8.png" alt="">
-            <img src="./assets/img/component/img9.jpg" alt="">
-            <img src="./assets/img/component/img10.jpg" alt="">
-            <img src="./assets/img/component/img11.png" alt="">
-            <img src="./assets/img/component/img12.jpg" alt="">
-            <img src="./assets/img/component/img13.jpg" alt="">
-            <img src="./assets/img/component/img14.png" alt="">
-            <img src="./assets/img/component/img15.png" alt="">
-            <img src="./assets/img/component/img16.png" alt="">
-            <img src="./assets/img/component/img17.jpg" alt="">
-            <img src="./assets/img/component/img18.jpg" alt="">
-            <img src="./assets/img/component/img19.jpg" alt="">
-            <img src="./assets/img/component/img20.jpg" alt="">
-            <img src="./assets/img/component/img21.jpg" alt="">
-            <img src="./assets/img/component/img23.png" alt="">
-            <img src="./assets/img/component/img24.jpg" alt="">
-            <img src="./assets/img/component/img25.jpg" alt="">
-            <img src="./assets/img/component/img26.png" alt="">
-        </div>
-        <div class="buttons">
-            <i class="fa-solid fa-chevron-left prev-btn"></i>
-            <i class="fa-solid fa-chevron-right next-btn"></i>
-        </div>
-    </section>
+    <main>
+        <section class="slide">
+            <div class="component">
+                <img src="./assets/img/component/img22.png" alt="">
+                <img src="./assets/img/component/img1.png" alt="">
+                <img src="./assets/img/component/img2.jpg" alt="">
+                <img src="./assets/img/component/img3.png" alt="">
+                <img src="./assets/img/component/img4.png" alt="">
+                <img src="./assets/img/component/img5.png" alt="">
+                <img src="./assets/img/component/img6.png" alt="">
+                <img src="./assets/img/component/img7.png" alt="">
+                <img src="./assets/img/component/img8.png" alt="">
+                <img src="./assets/img/component/img9.jpg" alt="">
+                <img src="./assets/img/component/img10.jpg" alt="">
+                <img src="./assets/img/component/img11.png" alt="">
+                <img src="./assets/img/component/img12.jpg" alt="">
+                <img src="./assets/img/component/img13.jpg" alt="">
+                <img src="./assets/img/component/img14.png" alt="">
+                <img src="./assets/img/component/img15.png" alt="">
+                <img src="./assets/img/component/img16.png" alt="">
+                <img src="./assets/img/component/img17.jpg" alt="">
+                <img src="./assets/img/component/img18.jpg" alt="">
+                <img src="./assets/img/component/img19.jpg" alt="">
+                <img src="./assets/img/component/img20.jpg" alt="">
+                <img src="./assets/img/component/img21.jpg" alt="">
+                <img src="./assets/img/component/img23.png" alt="">
+                <img src="./assets/img/component/img24.jpg" alt="">
+                <img src="./assets/img/component/img25.jpg" alt="">
+                <img src="./assets/img/component/img26.png" alt="">
+            </div>
+            <div class="buttons">
+                <i class="fa-solid fa-chevron-left prev-btn"></i>
+                <i class="fa-solid fa-chevron-right next-btn"></i>
+            </div>
+        </section>
 
-    <section class="widget">
-        <img src="./assets/img/widget/Sepet_202304181225.png" alt="">
-        <img src="./assets/img/widget/Onecikan_202304181225.png" alt="">
-        <img src="./assets/img/widget/Flash_202304181225.png" alt="">
-        <img src="./assets/img/widget/Kampanya_Detay_202409091015.png" alt="">
-    </section>
+        <section class="widget">
+            <img src="./assets/img/widget/Sepet_202304181225.png" alt="">
+            <img src="./assets/img/widget/Onecikan_202304181225.png" alt="">
+            <img src="./assets/img/widget/Flash_202304181225.png" alt="">
+            <img src="./assets/img/widget/Kampanya_Detay_202409091015.png" alt="">
+        </section>
 
-    <section class="urunler">
-        <h2>Popüler Ürünler</h2>
+        <section class="urunler">
+            <div class="sorting-container">
+                <label for="sortOptions">Sırala:</label>
+                <select id="sortOptions">
+                    <option value="default">Varsayılan</option>
+                    <option value="priceAsc">Ucuzdan Bahaya</option>
+                    <option value="priceDesc">Bahadan Ucuza</option>
+                </select>
+            </div>
+            
+            <h2>Popüler Ürünler</h2>
 
-        <div class="cards" id="cards"></div>
-    </section>
+            <div class="cards" id="cards"></div>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-top">
